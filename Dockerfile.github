@@ -9,7 +9,9 @@ RUN apt-get update && \
     apt-get clean
 
 RUN curl -fsSL https://get.docker.com -o get-docker.sh && \
-    sh ./get-docker.sh
+    sh ./get-docker.sh && \
+    sudo systemctl enable docker.service && \
+    sudo systemctl enable containerd.service
 
 # RUN apt-get update && \
 #   apt-get install -y ca-certificates && \
