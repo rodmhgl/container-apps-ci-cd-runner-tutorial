@@ -18,7 +18,7 @@ RUN apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugi
 
 RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
-    apt-get install -y jq unzip git docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin && \
+    apt-get install -y jq unzip git && \
     apt-get clean
 
 COPY github-actions-runner/entrypoint.sh ./entrypoint.sh
