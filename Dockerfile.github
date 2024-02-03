@@ -3,6 +3,8 @@ FROM ghcr.io/actions/actions-runner:2.304.0
 
 USER root
 
+RUN for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do apt-get remove $pkg; done
+
 RUN apt-get update && \
     apt-get install -y git jq unzip curl && \
     rm -rf /var/lib/apt/lists/* && \
