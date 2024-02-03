@@ -3,6 +3,8 @@ FROM ghcr.io/actions/actions-runner:2.304.0
 
 USER root
 
+RUN apt list | grep docker 
+
 RUN apt-get remove docker.io && \ 
     apt-get remove docker-doc && \
     apt-get remove docker-compose && \
