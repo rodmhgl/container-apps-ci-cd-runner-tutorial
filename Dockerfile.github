@@ -3,26 +3,10 @@ FROM ghcr.io/actions/actions-runner:2.304.0
 
 USER root
 
-RUN docker run hello-world
-
-RUN apt-get remove docker.io && \ 
-    apt-get remove docker-doc && \
-    apt-get remove docker-compose && \
-    apt-get remove podman-docker && \
-    apt-get remove containerd && \
-    apt-get remove runc
-
 RUN apt-get update && \
     apt-get install -y git jq unzip curl && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
-
-RUN curl -fsSL https://get.docker.com -o get-docker.sh && \
-    sh ./get-docker.sh && \
-    systemctl enable docker.service && \
-    systemctl enable containerd.service
-
-RUN docker run hello-world
 
 COPY github-actions-runner/entrypoint.sh ./entrypoint.sh
 
